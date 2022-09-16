@@ -12,10 +12,10 @@ public class Student {
         this.rollNo = rollNo;
 
         if(marks < 30){
-            System.out.println("com.training.assignment1.Student " + this.name +" cannot be initialized. Marks less than 30 cannot be accepted.");
+            System.out.println("Student " + this.name +" cannot be initialized. Marks less than 30 cannot be accepted.");
         }else{
             this.marks = marks;
-            System.out.println("com.training.assignment1.Student " + this.name + " is initialized.");
+            System.out.println("Student " + this.name + " is initialized.");
         }
     }
 }
