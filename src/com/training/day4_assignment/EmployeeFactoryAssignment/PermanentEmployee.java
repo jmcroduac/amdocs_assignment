@@ -1,4 +1,4 @@
-package com.training.day4_assignment;
+package com.training.day4_assignment.EmployeeFactoryAssignment;
 
 public class PermanentEmployee implements Employee{
     double basicPay;

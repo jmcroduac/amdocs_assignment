@@ -1,4 +1,4 @@
-package com.training.day4_assignment;
+package com.training.day4_assignment.EmployeeFactoryAssignment;
 
 public class EmployeeDriverClass {
     public static void main(String[] args) {
