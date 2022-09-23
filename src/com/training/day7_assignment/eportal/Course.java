@@ -1,4 +1,4 @@
-package com.training.day7_assignment;
+package com.training.day7_assignment.eportal;
 
 import java.util.ArrayList;
 import java.util.Collections;
