@@ -1,6 +1,4 @@
-package com.training.day12_assignment.shopping;
-
-import com.training.day11_assignment.Student;
+package com.training.day12_assignment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,13 +14,14 @@ public class ShoppingCart {
     }
 
     void removeItem(String name){
-        for (Map.Entry<Item, String> set :
-                shoppingCart.entrySet()) {
+        Item toBeRemoved = new Item("",0);
+        for (Map.Entry<Item, String> set : shoppingCart.entrySet()) {
             if(set.getKey().name.equalsIgnoreCase(name)){
-                shoppingCart.remove(set.getKey());
-                System.out.println("Item " + name + " is removed from the shopping cart.");
+                toBeRemoved = set.getKey();
             }
         }
+        shoppingCart.remove(toBeRemoved);
+        System.out.println("Item " + name + " is removed from the shopping cart.");
     }
 
     void displayItems(){
@@ -86,5 +85,13 @@ public class ShoppingCart {
 
         System.out.println("---------------------");
         System.out.println("OVERALL TOTAL AMOUNT: " + overallTotal + "\n");
+    }
+
+    void displayMenu(){
+        System.out.println("Shopping Cart Menu:");
+        System.out.println("1. Add item");
+        System.out.println("2. Remove Item");
+        System.out.println("3. Display items and total amount");
+        System.out.print("Enter number of desired action: ");
     }
 }

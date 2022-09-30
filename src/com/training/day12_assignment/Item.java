@@ -1,4 +1,4 @@
-package com.training.day12_assignment.shopping;
+package com.training.day12_assignment;
 
 public class Item {
     String name;
