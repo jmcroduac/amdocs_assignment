@@ -2,8 +2,9 @@ package com.training.day13_assignment.model;
 
 public class Student implements Comparable<Student>{
     private String studId;
-    private String studName;
     private String studAddress;
+    private String studName;
+
     private String departments;
 
     public String getStudId() {

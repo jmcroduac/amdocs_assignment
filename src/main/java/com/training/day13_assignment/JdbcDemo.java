@@ -19,9 +19,9 @@ public class JdbcDemo {
             //Store more records in Student table using stored procedure
             String query1 = "{call ADD_STUDENT(?,?,?,?)}";
             CallableStatement cs = con.prepareCall(query1);
-            cs.setString(1,"ST105");
-            cs.setString(2,"KEITH");
-            cs.setString(3,"MAKATI");
+            cs.setString(1,"ST106");
+            cs.setString(2,"ZACH");
+            cs.setString(3,"CAVITE");
             cs.setString(4,"IT");
             cs.execute();
 
