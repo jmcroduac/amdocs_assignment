@@ -1,4 +1,4 @@
-package com.training.day13_assignment.model;
+package com.training.day13_assignment;
 
 public class Student implements Comparable<Student>{
     private String studId;

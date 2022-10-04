@@ -3,9 +3,8 @@ package com.training.day13_assignment;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
-import com.training.day13_assignment.model.Student;
 
-public class JdbcDemo {
+public class JDBCDemo {
     public static void main(String[] args) {
 
         try {
