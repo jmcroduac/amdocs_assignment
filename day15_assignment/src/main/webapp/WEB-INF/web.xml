@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xlmns:xsi="http://www.w3.org/2001/XMLSchema-instance" xlmns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="https://www.w3schools.com note.xsd">
+	<display-name>web-demo</display-name>
+	<welcome-file-list>
+		<welcome-file>index.hmtl</welcome-file>
+	</welcome-file-list>
+	
+	<servlet>
+		<servlet-name>MyServlet</servlet-name>
+		<servlet-class>day15_assignment.DemoServlet</servlet-class>
+		<init-param>
+			<param-name>email</param-name>
+			<param-value>abc@mail.com</param-value>
+		</init-param>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>MyServlet</servlet-name>
+		<url-pattern>/index</url-pattern>
+	</servlet-mapping>
+
+</web-app>
