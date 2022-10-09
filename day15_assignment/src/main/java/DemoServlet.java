@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import day15_assignment.PasswordTable;
+
 /**
  * Servlet implementation class DemoServlet
  */
@@ -30,6 +32,7 @@ public class DemoServlet extends HttpServlet {
     public void init(ServletConfig config) {
     	msg = "Kevin";
     	this.config = config;
+    	
     }
 
 	/**
@@ -44,8 +47,12 @@ public class DemoServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
+		PasswordTable pwTable = new PasswordTable();
+		pwTable.insertEntity();
+		boolean retVal = pwTable.findEntity(username, password);
 		
-		if(username.equals(uname) && (password.equals(pword))) {
+		
+		if(retVal) {
 			out.println("<html><body>");
 			out.println("<h1>Login successful:</h1>");
 			out.println("<h2>Welcome " + username + "</h2>");
