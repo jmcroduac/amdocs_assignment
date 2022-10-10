@@ -9,14 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="LogIn_Table")
+@Table(name="LogIn_Test")
 public class LogIn {
 
     @Id
-    @Column(name="login_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int loginId;
-
     @Column(name="user_name")
     private String userName;
     
@@ -28,18 +24,6 @@ public class LogIn {
         this.userName = userName;
         this.password = password;
     }
-
-    public int getLoginId() {
-		return loginId;
-	}
-
-
-
-	public void setLoginId(int loginId) {
-		this.loginId = loginId;
-	}
-
-
 
 	public String getUserName() {
 		return userName;

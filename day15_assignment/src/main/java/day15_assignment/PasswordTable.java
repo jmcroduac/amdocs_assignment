@@ -10,18 +10,13 @@ public class PasswordTable {
         EntityManager entity = emFactoryObj.createEntityManager();
         entity.getTransaction().begin();
 
-        LogIn l1 = new LogIn("Jennie","BPJennie");
+        LogIn l1 = new LogIn("Jorena","JJJorena");
         entity.persist(l1);
-        LogIn l2 = new LogIn("Lisa","BPLalisa");
+        LogIn l2 = new LogIn("Maika","MMMaika");
         entity.persist(l2);
-        LogIn l3 = new LogIn("Rose","BPRose");
+        LogIn l3 = new LogIn("Calinog","CCCalinog");
         entity.persist(l3);
-        LogIn l4 = new LogIn("Jisoo","BPJisoo");
-        entity.persist(l4);
-        LogIn l5 = new LogIn("Nayeon","TwiceNY");
-        entity.persist(l5);
-        LogIn l6 = new LogIn("Jihyo","TwiceJH");
-        entity.persist(l6);
+        
         
         entity.getTransaction().commit();
         entity.close();
@@ -33,16 +28,15 @@ public class PasswordTable {
         EntityManager entity = emFactoryObj.createEntityManager();
         entity.getTransaction().begin();
         
-        boolean retVal;
-
-        for(int i = 1; i <= 6; i++){
-            LogIn s = entity.find(LogIn.class,i);
-            if(s.getUserName().compareTo(username) == 0 && s.getPassword().compareTo(password) == 0){
+        boolean retVal = false;
+        
+        LogIn s = entity.find(LogIn.class,username);
+        if(s != null) {
+        	if(s.getUserName().compareTo(username) == 0 && s.getPassword().compareTo(password) == 0){
             	retVal = true;
             }
         }
-        retVal = false;
-
+        
         entity.getTransaction().commit();
         entity.close();
         emFactoryObj.close();
