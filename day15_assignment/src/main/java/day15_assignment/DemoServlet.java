@@ -2,7 +2,9 @@ package day15_assignment;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,24 +21,23 @@ import javax.servlet.http.HttpServletResponse;
 public class DemoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	String msg;
-	String uname = "maika";
-	String pword = "jorena";
 	ServletConfig config;
-	PasswordTable loginTable;
+	PasswordTable loginCredentials;
 
     /**
      * Default constructor. 
      */
     public DemoServlet() {
     	super();
+    	loginCredentials = new PasswordTable();
+    	//loginCredentials.insertEntity();
         // TODO Auto-generated constructor stub
     }
     
     public void init(ServletConfig config) {
     	msg = "Kevin";
     	this.config = config;
-		loginTable = new PasswordTable();
-		//loginTable.insertEntity();
+    	//loginCredentials.insertEntity();
     
     }
 
@@ -49,12 +50,12 @@ public class DemoServlet extends HttpServlet {
 		String username = request.getParameter("uname");
 		String password = request.getParameter("pwd");
 		
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
+		//response.setContentType("text/html");
+		//PrintWriter out = response.getWriter();
 		
-		boolean retVal = loginTable.findEntity(username, password);
+		//boolean retVal = loginTable.findEntity(username, password);
 		
-		
+		/*
 		if(retVal ==  true) {
 			out.println("<html><body>");
 			out.println("<h1>Login successful:</h1>");
@@ -66,7 +67,16 @@ public class DemoServlet extends HttpServlet {
 			out.println("<h2>Try again</h2>");
 			out.println("/<body></html>");
 		}
+		*/
 		
+		HashMap<String, String> allLoginCreds = loginCredentials.returnAllEntity();
+		
+		
+		request.setAttribute("loginCreds", allLoginCreds);
+		
+		
+		RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
+		rd.forward(request, response);
 	}
 
 	/**

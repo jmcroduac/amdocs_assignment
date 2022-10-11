@@ -9,21 +9,39 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="LogIn_Test")
+@Table(name="LogIn_JSP")
 public class LogIn {
 
     @Id
+    @Column(name="login_id")
+    private int login_id;
+    
     @Column(name="user_name")
     private String userName;
     
     @Column(name="password")
     private String password;
 
-    public LogIn(String userName, String password) {
+    public LogIn(int login_id, String userName, String password) {
         super();
+        this.login_id = login_id;
         this.userName = userName;
         this.password = password;
     }
+    
+    
+
+	public int getLogin_id() {
+		return login_id;
+	}
+
+
+
+	public void setLogin_id(int login_id) {
+		this.login_id = login_id;
+	}
+
+
 
 	public String getUserName() {
 		return userName;
