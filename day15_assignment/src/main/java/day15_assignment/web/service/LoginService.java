@@ -1,6 +1,9 @@
 package day15_assignment.web.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+
+import day15_assignment.LogIn;
 
 public interface LoginService {
 	
@@ -8,6 +11,6 @@ public interface LoginService {
 
 	public String returnUserType(String username, String password);
 
-	public HashMap<String, String> returnAllUser();
+	public ArrayList<LogIn> returnAllUser();
 
 }

@@ -60,10 +60,11 @@ public class DemoServlet extends HttpServlet {
 		boolean valid = service.isValid(username,password);
 		String userType = service.returnUserType(username,password);
 		
-		//ArrayList<LogIn> userList = loginCredentials.returnAllEntity();
+		ArrayList<LogIn> userList = service.returnAllUser();
 		
 		request.setAttribute("uname", username);
 		request.setAttribute("pwd", password);
+		request.setAttribute("userlist", userList);
 		
 		if(valid && userType.equalsIgnoreCase("user")) {
 			RequestDispatcher rd = request.getRequestDispatcher("user.jsp");
@@ -75,13 +76,6 @@ public class DemoServlet extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("failure.jsp");
 			rd.forward(request, response);
 		}
-		
-		
-		request.setAttribute("valid", valid);
-		request.setAttribute("userType", userType);
-		//request.setAttribute("userlist", userList);
-
-
 		
 	}
 

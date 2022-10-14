@@ -10,7 +10,6 @@
 </head>
 <body>
 	<h2>Login Failed. Please try again.</h2>
-	<c:out value="${uname}"/>
-	<c:out value="${pwd}"/>
+	
 </body>
 </html>

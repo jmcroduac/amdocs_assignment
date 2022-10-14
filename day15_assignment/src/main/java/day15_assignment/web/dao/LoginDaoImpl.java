@@ -1,5 +1,6 @@
 package day15_assignment.web.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.persistence.EntityManager;
@@ -12,28 +13,25 @@ import day15_assignment.LogIn;
 public class LoginDaoImpl implements LoginDao{
 
 	@Override
-	public HashMap<String,String[]> getUser() {
+	public ArrayList<LogIn> getUser() {
 		// Connect to the db, get the user info and return it
-		EntityManagerFactory emFactoryObjj = Persistence.createEntityManagerFactory("LoginServlet");
-        EntityManager entity = emFactoryObjj.createEntityManager();
+		EntityManagerFactory emFactoryObj = Persistence.createEntityManagerFactory("LoginServlet");
+        EntityManager entity = emFactoryObj.createEntityManager();
         entity.getTransaction().begin();
         
         Query q = entity.createQuery ("SELECT count(*) FROM LogIn");
         int result = ((Long) q.getSingleResult()).intValue();
         
-        HashMap<String,String[]> loginCreds = new HashMap<>();
-        String[] userPwd = new String[2];
+        ArrayList<LogIn> loginCreds = new ArrayList<>();
         
         for(int i = 53; i < (result + 53); i++) {
         	LogIn s = entity.find(LogIn.class,i);
-        	userPwd[0] = s.getUserName();
-        	userPwd[1] = s.getPassword();
-            loginCreds.put(s.getUserType(), userPwd);
+            loginCreds.add(s);
         }
         
         entity.getTransaction().commit();
         entity.close();
-        emFactoryObjj.close();
+        emFactoryObj.close();
         
 		return loginCreds;
 	}
