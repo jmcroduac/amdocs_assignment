@@ -9,10 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="LogIn_JSP")
+@Table(name="LogIn_Register")
 public class LogIn {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="login_id")
     private int login_id;
     
@@ -21,15 +22,16 @@ public class LogIn {
     
     @Column(name="password")
     private String password;
+    
+    @Column(name="user_type")
+    private String userType;
 
-    public LogIn(int login_id, String userName, String password) {
-        super();
-        this.login_id = login_id;
-        this.userName = userName;
-        this.password = password;
-    }
-    
-    
+	public LogIn(String userName, String password, String userType) {
+		super();
+		this.userName = userName;
+		this.password = password;
+		this.userType = userType;
+	}
 
 	public int getLogin_id() {
 		return login_id;
@@ -63,6 +65,17 @@ public class LogIn {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	
+	public String getUserType() {
+		return userType;
+	}
+
+
+
+	public void setUserType(String userType) {
+		this.userType = userType;
 	}
 
 

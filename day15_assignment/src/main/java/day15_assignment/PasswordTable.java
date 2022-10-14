@@ -1,30 +1,21 @@
 package day15_assignment;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 public class PasswordTable {
-	int entityCount = 0;
 	
-	public void insertEntity() {
+	public void insertEntity(String username, String password, String userType) {
         EntityManagerFactory emFactoryObj = Persistence.createEntityManagerFactory("LoginServlet");
         EntityManager entity = emFactoryObj.createEntityManager();
         entity.getTransaction().begin();
 
-        entityCount++;
-        LogIn l1 = new LogIn(entityCount, "Jennie","JJJorena");
+        LogIn l1 = new LogIn(username, password, userType);
         entity.persist(l1);
-        entityCount++;
-        LogIn l2 = new LogIn(entityCount,"Lisa","MMMaika");
-        entity.persist(l2);
-        entityCount++;
-        LogIn l3 = new LogIn(entityCount, "Rose","CCCalinog");
-        entity.persist(l3);
-       
         
         entity.getTransaction().commit();
         entity.close();
@@ -53,21 +44,25 @@ public class PasswordTable {
         return retVal;
     }
 	
-	public HashMap<String,String> returnAllEntity() {
+	public ArrayList<LogIn> returnAllEntity() {
         EntityManagerFactory emFactoryObj = Persistence.createEntityManagerFactory("LoginServlet");
         EntityManager entity = emFactoryObj.createEntityManager();
         entity.getTransaction().begin();
-        HashMap<String, String> userNamePwd = new HashMap<>();
         
-        for(int i = 1; i <= 3; i++) {
+        Query q = entity.createQuery ("SELECT count(*) FROM LogIn");
+        int result = ((Long) q.getSingleResult()).intValue();
+
+        ArrayList<LogIn> userList = new ArrayList<>();
+        
+        for(int i = 53; i < (53 + result); i++) {
             LogIn l = entity.find(LogIn.class, i);
-            userNamePwd.put(l.getUserName(), l.getPassword());
+            userList.add(l);
         }
         
         entity.getTransaction().commit();
         entity.close();
         emFactoryObj.close();
-        return userNamePwd;
+        return userList;
 
     }
 }

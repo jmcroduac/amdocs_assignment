@@ -26,9 +26,8 @@ public class DemoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	String msg;
 	ServletConfig config;
-	CourseOperations courseOps;
 	LoginService service;
-	//PasswordTable loginCredentials;
+	PasswordTable loginCredentials;
 
     /**
      * Default constructor. 
@@ -55,27 +54,34 @@ public class DemoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String email = config.getInitParameter("email");
 		String username = request.getParameter("uname");
 		String password = request.getParameter("pwd");
 		
-		courseOps = new CourseOperations();
-    	//courseOps.insertEntity();
-		
-		ArrayList<Course> courseList = courseOps.returnAllEntity();
-		request.setAttribute("courseTable", courseList);
-		
 		boolean valid = service.isValid(username,password);
-		if(valid) {
-			RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
+		String userType = service.returnUserType(username,password);
+		
+		//ArrayList<LogIn> userList = loginCredentials.returnAllEntity();
+		
+		request.setAttribute("uname", username);
+		request.setAttribute("pwd", password);
+		
+		if(valid && userType.equalsIgnoreCase("user")) {
+			RequestDispatcher rd = request.getRequestDispatcher("user.jsp");
+			rd.forward(request, response);
+		}else if(valid && userType.equalsIgnoreCase("admin")){
+			RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
 			rd.forward(request, response);
 		}else {
 			RequestDispatcher rd = request.getRequestDispatcher("failure.jsp");
 			rd.forward(request, response);
 		}
 		
-		//response.setContentType("text/html");
-		//PrintWriter out = response.getWriter();
+		
+		request.setAttribute("valid", valid);
+		request.setAttribute("userType", userType);
+		//request.setAttribute("userlist", userList);
+
+
 		
 	}
 

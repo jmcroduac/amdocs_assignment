@@ -2,7 +2,7 @@
 <web-app xlmns:xsi="http://www.w3.org/2001/XMLSchema-instance" xlmns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="https://www.w3schools.com note.xsd">
 	<display-name>web-demo</display-name>
 	<welcome-file-list>
-		<welcome-file>index.hmtl</welcome-file>
+		<welcome-file>index1.hmtl</welcome-file>
 	</welcome-file-list>
 	
 	<servlet>

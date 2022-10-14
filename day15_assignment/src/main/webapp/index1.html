@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Index Page</title>
+<title>Login Page</title>
 </head>
 <body>
-	<h1>Welcome to my index page.</h1>
+	<h1>Log In</h1>
 	<form action="demo-servlet" method="post">
 		Username: <input type="text" name="uname" id="user"/><br><br>
-		Password: <input type="password" name="pwd" id="pass"/><br><br>
+		Password: <input type="password" name="pwd" id="pass"/><br><br>		
 		<input type = "submit" value="Log In"/>
-		<input type= "button" onclick="register" value="Sign up">
+		<a href="register.html">
+			<input type= "button" value="Register">
+		</a>
+		
 	</form>
 </body>
 </html>

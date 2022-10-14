@@ -6,11 +6,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Log In Failed</title>
+<title>User Page</title>
 </head>
 <body>
-	<h2>Login Failed. Please try again.</h2>
-	<c:out value="${uname}"/>
-	<c:out value="${pwd}"/>
+		<h1>Successful user log-in!</h1>
+		<h2>Here are your user details: </h2>
+		Username: <c:out value="${uname}"/><br>
+		Password: <c:out value="${pwd}"/><br>
+		User Type: <c:out value="User"/>
 </body>
 </html>
