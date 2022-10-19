@@ -1,18 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Login Page</title>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
 </head>
 <body>
-	<h1>Log In</h1>
-	<form action="home" method="post">
-		Username: <input type="text" name="uname" id="user"/><br><br>
-		Password: <input type="password" name="pwd" id="pass"/><br><br>		
-		<input type = "submit" value="Log In"/>
-		<a href="register.html">
-			<input type= "button" value="Register">
-		</a>
-		
+<h1>${msg}</h1>
+<a href="${pageContext.request.contextPath}/getUser?userId=123">get user details</a><br><br>
+
+<a href="${pageContext.request.contextPath}/getName/Mark">get user details</a>
+
+	<form action="${pageContext.request.contextPath}/save" method="post">
+		UserName: <input type="text" name ="uname" id ="uname"/> <br>
+		<input type="submit" value="Submit">
 	</form>
 </body>
 </html>
